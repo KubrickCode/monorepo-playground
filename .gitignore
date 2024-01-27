@@ -1,0 +1,13 @@
+.DS_Store
+.env
+node_modules/
+yarn-error.log
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+src/**/.yarn
+src/go/**/tmp/
+/tmp/

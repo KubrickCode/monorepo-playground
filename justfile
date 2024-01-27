@@ -13,6 +13,18 @@ deps-nest:
 deps-react:
   cd "{{ react_dir }}" && yarn install
 
+makemigration name:
+  just prisma migrate dev --create-only --name {{ name }}
+
+migrate:
+  just prisma migrate dev
+
+prisma *args:
+  #!/usr/bin/env bash
+  set -euox pipefail
+  cd "{{ nest_dir }}"
+  yarn prisma {{ args }}
+
 run svc *args:
   #!/usr/bin/env bash
   set -euox pipefail
