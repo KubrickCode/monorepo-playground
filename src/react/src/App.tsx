@@ -1,9 +1,9 @@
-import { ChakraProvider, Button } from '@chakra-ui/react'
+import { ChakraProvider, Button } from "@chakra-ui/react";
 
-export const App = () =>  {
+export const App = () => {
   return (
     <ChakraProvider>
       <Button>Chakra Button</Button>
     </ChakraProvider>
-  )
-}
+  );
+};

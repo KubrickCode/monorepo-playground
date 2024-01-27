@@ -1,0 +1,31 @@
+{
+  "recommendations": [
+    "adam-bender.commit-message-editor",
+    "bradgashler.htmltagwrap",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "chunsen.bracket-select",
+    "codezombiech.gitignore",
+    "cweijan.vscode-redis-client",
+    "esbenp.prettier-vscode",
+    "formulahendry.code-runner",
+    "gitHub.vscode-pull-request-github",
+    "github.codespaces",
+    "github.copilot",
+    "github.copilot-chat",
+    "github.vscode-github-actions",
+    "golang.go-nightly",
+    "gruntfuggly.todo-tree",
+    "kevinkyang.auto-comment-blocks",
+    "kisstkondoros.vscode-gutter-preview",
+    "mhutchie.git-graph",
+    "mquandalle.graphql",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    "prisma.prisma",
+    "rangav.vscode-thunder-client",
+    "skellock.just",
+    "wayou.vscode-todo-highlight",
+    "zengxingxin.sort-js-object-keys"
+  ]
+}
