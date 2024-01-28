@@ -90,7 +90,7 @@ run svc *args:
 
     fiber)
       cd "{{ fiber_dir }}"
-        PORT=3002 go run .
+        PORT=3002 air
         ;;
       
 
