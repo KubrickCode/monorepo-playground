@@ -3,8 +3,10 @@ import { createElement } from "react";
 import * as ReactRouter from "react-router-dom";
 
 import UserPage from "../../pages/user";
+import MainPage from "~/pages/main";
 
 const routes = {
+  "/": MainPage,
   "/user": UserPage,
 };
 

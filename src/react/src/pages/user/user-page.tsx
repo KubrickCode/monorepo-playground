@@ -1,5 +1,6 @@
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { CreateUser } from "./components/create-user";
 import { UserTable } from "./components/user-table";
@@ -20,6 +21,9 @@ export const UserPage = () => {
 
   return (
     <Flex direction="column" gap={10}>
+      <Link to="/">
+        <Button>Go To Main</Button>
+      </Link>
       <ApiSwtich apiMode={apiMode} setApiMode={setApiMode} />
       <CreateUser saveData={saveData} setName={setName} />
       <UserTable
