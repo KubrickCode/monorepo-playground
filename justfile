@@ -1,6 +1,7 @@
 root_dir := justfile_directory()
 nest_dir := root_dir + "/src/nest"
 react_dir := root_dir + "/src/react"
+fiber_dir := root_dir + "/src/go/fiber"
 
 default:
   @just --list
@@ -86,4 +87,11 @@ run svc *args:
       cd "{{ react_dir }}"
       GENERATE_SOURCEMAP=false PORT=3000 yarn start
       ;;
+
+    fiber)
+      cd "{{ fiber_dir }}"
+        PORT=3002 go run .
+        ;;
+      
+
   esac
