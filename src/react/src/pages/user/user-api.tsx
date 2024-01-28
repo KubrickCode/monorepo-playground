@@ -17,7 +17,7 @@ export const useUserApi = (apiMode: ApiMode) => {
   const [queryState, setQueryState] = useState(false);
 
   const { data: gqlData } = useQuery(UserPageDocument, {
-    skip: apiMode !== "graphql",
+    skip: apiMode !== "graphqlNest",
   });
 
   const [createMutation] = useMutation(UserCreateDocument, {
@@ -38,7 +38,7 @@ export const useUserApi = (apiMode: ApiMode) => {
   };
 
   const saveData = async () => {
-    if (apiMode === "graphql") {
+    if (apiMode === "graphqlNest") {
       createMutation({
         variables: {
           input: {
@@ -55,7 +55,7 @@ export const useUserApi = (apiMode: ApiMode) => {
   const updateData = async (id: number) => {
     if (!newName) alert("이름을 입력해주세요");
 
-    if (apiMode === "graphql") {
+    if (apiMode === "graphqlNest") {
       editMutation({
         variables: {
           input: {
@@ -71,7 +71,7 @@ export const useUserApi = (apiMode: ApiMode) => {
   };
 
   const deleteData = async (id: number) => {
-    if (apiMode === "graphql") {
+    if (apiMode === "graphqlNest") {
       deleteMutation({
         variables: {
           input: {
@@ -86,7 +86,7 @@ export const useUserApi = (apiMode: ApiMode) => {
   };
 
   useEffect(() => {
-    if (apiMode === "graphql" && gqlData) {
+    if (apiMode === "graphqlNest" && gqlData) {
       setUsers(gqlData.users);
     } else {
       getData();
