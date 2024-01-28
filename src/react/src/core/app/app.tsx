@@ -1,17 +1,17 @@
-import { ChakraProvider } from "@chakra-ui/react";
 import { Router, Routes } from "./router";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../graphql/graphql";
+import { ThemeProvider } from "../theme";
 
 const App = () => {
   return (
-    <ChakraProvider>
+    <ThemeProvider>
       <ApolloProvider client={client}>
         <Router>
           <Routes />
         </Router>
       </ApolloProvider>
-    </ChakraProvider>
+    </ThemeProvider>
   );
 };
 
