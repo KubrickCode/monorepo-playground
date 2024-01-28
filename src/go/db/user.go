@@ -29,7 +29,7 @@ func init() {
 
 func GetUsers() ([]User, error) {
     var users []User
-    result := DB.Find(&users)
+    result := DB.Order("id asc").Find(&users)
     return users, result.Error
 }
 
