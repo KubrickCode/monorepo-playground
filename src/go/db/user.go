@@ -32,3 +32,11 @@ func GetUsers() ([]User, error) {
     result := DB.Find(&users)
     return users, result.Error
 }
+
+func CreateUser(name string) (User, error) {
+	user := User{
+		Name: name,
+	}
+	result := DB.Create(&user)
+	return user, result.Error
+}

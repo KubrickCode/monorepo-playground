@@ -53,7 +53,7 @@ export const useUserApi = (apiMode: ApiMode) => {
         },
       });
     } else {
-      await axios.post("/api/users", { name });
+      await axios.post(`${apiGroup}/users`, { name });
       setQueryState((prev) => !prev);
     }
   };

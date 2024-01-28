@@ -14,8 +14,10 @@ func main() {
     app := fiber.New(config)
 
     api := app.Group("/go")
+
+    userAPI := api.Group("/users")
  
-    api.Get("/users", func(c *fiber.Ctx) error {
+    userAPI.Get("", func(c *fiber.Ctx) error {
         users, err := db.GetUsers()
         if err != nil {
             return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -24,6 +26,27 @@ func main() {
         }
 
         return c.JSON(users)
+    })
+
+    userAPI.Post("", func(c *fiber.Ctx) error {
+        var body struct {
+            Name string `json:"name"`
+        }
+
+        if err := c.BodyParser(&body); err != nil {
+            return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+                "error": "Could not parse JSON",
+            })
+        }
+
+        user, err := db.CreateUser(body.Name)
+        if err != nil {
+            return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+                "error": "Could not create user",
+            })
+        }
+
+        return c.JSON(user)
     })
  
     app.Listen(":3002")
