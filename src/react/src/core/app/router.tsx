@@ -2,10 +2,10 @@ import _ from "lodash";
 import { createElement } from "react";
 import * as ReactRouter from "react-router-dom";
 
-import RestPage from "../../pages/rest";
+import UserPage from "../../pages/user";
 
 const routes = {
-  "/rest": RestPage,
+  "/user": UserPage,
 };
 
 export const Routes = () => {
