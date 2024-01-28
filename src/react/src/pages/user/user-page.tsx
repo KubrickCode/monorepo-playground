@@ -2,6 +2,8 @@ import { Button, Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { Page } from "~/core/page";
+
 import { CreateUser } from "./components/create-user";
 import { UserTable } from "./components/user-table";
 import { useUserApi } from "./user-api";
@@ -20,18 +22,20 @@ export const UserPage = () => {
     useUserApi(apiMode);
 
   return (
-    <Flex direction="column" gap={10}>
-      <Link to="/">
-        <Button>Go To Main</Button>
-      </Link>
-      <ApiSwtich apiMode={apiMode} setApiMode={setApiMode} />
-      <CreateUser saveData={saveData} setName={setName} />
-      <UserTable
-        deleteData={deleteData}
-        setNewName={setNewName}
-        updateData={updateData}
-        users={users}
-      />
-    </Flex>
+    <Page>
+      <Flex direction="column" gap={10}>
+        <Link to="/">
+          <Button w="full">Go To Main</Button>
+        </Link>
+        <ApiSwtich apiMode={apiMode} setApiMode={setApiMode} />
+        <CreateUser saveData={saveData} setName={setName} />
+        <UserTable
+          deleteData={deleteData}
+          setNewName={setNewName}
+          updateData={updateData}
+          users={users}
+        />
+      </Flex>
+    </Page>
   );
 };
