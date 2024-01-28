@@ -5,6 +5,12 @@ react_dir := root_dir + "/src/react"
 default:
   @just --list
 
+codegen:
+  #!/usr/bin/env bash
+  set -euox pipefail
+  cd "{{ react_dir }}"
+  yarn codegen
+
 deps: deps-nest deps-react
 
 deps-nest:

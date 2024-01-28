@@ -1,0 +1,6 @@
+query UserPage {
+  users {
+    id
+    name
+  }
+}

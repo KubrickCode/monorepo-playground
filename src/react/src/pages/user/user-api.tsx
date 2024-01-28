@@ -1,41 +1,51 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { User } from "./user-page";
+import { ApiMode, User } from "./user-page";
+import { useQuery } from "@apollo/client";
+import { UserPageDocument } from "~/core/graphql/generated";
 
-export const useUserApi = () => {
+export const useUserApi = (apiMode: ApiMode) => {
   const [name, setName] = useState("");
   const [newName, setNewName] = useState("");
   const [users, setUsers] = useState<User[]>([]);
+  const [queryState, setQueryState] = useState(false);
+
+  const { data: gqlData } = useQuery(UserPageDocument, {
+    skip: apiMode !== "graphql",
+  });
 
   const getData = async () => {
-    const { data } = await axios.get("/api");
+    const { data } = await axios.get("/api/users");
     setUsers(data);
   };
 
   const saveData = async () => {
-    await axios.post("/api", { name });
-    await getData();
+    await axios.post("/api/users", { name });
+    setQueryState((prev) => !prev);
   };
 
   const updateData = async (id: number) => {
     if (!newName) alert("이름을 입력해주세요");
-    await axios.put(`/api/${id}`, { name: newName });
-    await getData();
+    await axios.put(`/api/users/${id}`, { name: newName });
+    setQueryState((prev) => !prev);
   };
 
   const deleteData = async (id: number) => {
-    await axios.delete(`/api/${id}`);
-    await getData();
+    await axios.delete(`/api/users/${id}`);
+    setQueryState((prev) => !prev);
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    if (apiMode === "graphql" && gqlData) {
+      setUsers(gqlData.users);
+    } else {
+      getData();
+    }
+  }, [apiMode, gqlData, queryState]);
 
   return {
     deleteData,
-    getData,
     saveData,
     setName,
     setNewName,

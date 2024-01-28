@@ -1,11 +1,24 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
+
 import { PrismaModule } from './prisma';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [PrismaModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      useFactory: () => ({
+        debug: true,
+        playground: true,
+        autoSchemaFile: join(process.cwd(), 'schema.graphql'),
+        sortSchema: true,
+      }),
+    }),
+    PrismaModule,
+    UserModule,
+  ],
 })
 export class AppModule {}
