@@ -1,5 +1,6 @@
 import {
   Button,
+  Flex,
   Input,
   Table,
   TableContainer,
@@ -42,15 +43,20 @@ export const UserTable = ({
               <Td>{user.id}</Td>
               <Td>{user.name}</Td>
               <Td>
-                <Input
-                  placeholder="이름"
-                  w={40}
-                  onChange={(e) => setNewName(e.target.value)}
-                />
-                <Button onClick={() => updateData(user.id)}>저장</Button>
+                <Flex gap={3}>
+                  <Input
+                    placeholder="이름"
+                    w={40}
+                    onChange={(e) => setNewName(e.target.value)}
+                  />
+                  <Button onClick={() => updateData(user.id)}>저장</Button>
+                </Flex>
               </Td>
               <Td>
-                <Button colorScheme="red" onClick={() => deleteData(user.id)}>
+                <Button
+                  backgroundColor="red.400"
+                  onClick={() => deleteData(user.id)}
+                >
                   삭제
                 </Button>
               </Td>
