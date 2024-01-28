@@ -11,6 +11,7 @@ import {
   Tbody,
   Td,
   Flex,
+  Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -32,6 +33,7 @@ export const App = () => {
 
   const saveData = async () => {
     await axios.post("/api", { name });
+    await getData();
   };
 
   const updateData = async (id: number) => {
@@ -53,7 +55,15 @@ export const App = () => {
     <ChakraProvider>
       <Flex direction="column" gap={10}>
         <Box>
-          <Button onClick={getData}>유저 불러오기</Button>
+          <Text>유저 생성</Text>
+          <Input
+            onChange={(e) => setName(e.target.value)}
+            placeholder="이름"
+            w={40}
+          />
+          <Button onClick={saveData}>저장</Button>
+        </Box>
+        <Box>
           <TableContainer>
             <Table variant="simple">
               <Thead>
@@ -90,14 +100,6 @@ export const App = () => {
               </Tbody>
             </Table>
           </TableContainer>
-        </Box>
-        <Box>
-          <Input
-            onChange={(e) => setName(e.target.value)}
-            placeholder="이름"
-            w={40}
-          />
-          <Button onClick={saveData}>저장</Button>
         </Box>
       </Flex>
     </ChakraProvider>
