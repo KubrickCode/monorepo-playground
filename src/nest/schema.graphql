@@ -4,6 +4,7 @@
 
 type Mutation {
   userCreate(input: UserCreateInput!): [UserCreateResult!]!
+  userDelete(input: UserDeleteInput!): [UserDeleteResult!]!
   userEdit(input: UserEditInput!): [UserEditResult!]!
 }
 
@@ -21,6 +22,14 @@ input UserCreateInput {
 }
 
 type UserCreateResult {
+  user: User!
+}
+
+input UserDeleteInput {
+  id: Float!
+}
+
+type UserDeleteResult {
   user: User!
 }
 

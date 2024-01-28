@@ -5,6 +5,7 @@ import { ApiMode, User } from "./user-page";
 import { useMutation, useQuery } from "@apollo/client";
 import {
   UserCreateDocument,
+  UserDeleteDocument,
   UserEditDocument,
   UserPageDocument,
 } from "~/core/graphql/generated";
@@ -24,6 +25,10 @@ export const useUserApi = (apiMode: ApiMode) => {
   });
 
   const [editMutation] = useMutation(UserEditDocument, {
+    refetchQueries: [UserPageDocument],
+  });
+
+  const [deleteMutation] = useMutation(UserDeleteDocument, {
     refetchQueries: [UserPageDocument],
   });
 
@@ -66,8 +71,18 @@ export const useUserApi = (apiMode: ApiMode) => {
   };
 
   const deleteData = async (id: number) => {
-    await axios.delete(`/api/users/${id}`);
-    setQueryState((prev) => !prev);
+    if (apiMode === "graphql") {
+      deleteMutation({
+        variables: {
+          input: {
+            id,
+          },
+        },
+      });
+    } else {
+      await axios.delete(`/api/users/${id}`);
+      setQueryState((prev) => !prev);
+    }
   };
 
   useEffect(() => {

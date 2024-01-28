@@ -20,3 +20,11 @@ mutation UserEdit($input: UserEditInput!) {
     }
   }
 }
+
+mutation UserDelete($input: UserDeleteInput!) {
+  userDelete(input: $input) {
+    user {
+      id
+    }
+  }
+}
