@@ -4,6 +4,7 @@
 
 type Mutation {
   userCreate(input: UserCreateInput!): [UserCreateResult!]!
+  userEdit(input: UserEditInput!): [UserEditResult!]!
 }
 
 type Query {
@@ -20,5 +21,14 @@ input UserCreateInput {
 }
 
 type UserCreateResult {
+  user: User!
+}
+
+input UserEditInput {
+  id: Float!
+  name: String!
+}
+
+type UserEditResult {
   user: User!
 }

@@ -18,11 +18,17 @@ export type Scalars = {
 export type Mutation = {
   __typename?: 'Mutation';
   userCreate: Array<UserCreateResult>;
+  userEdit: Array<UserEditResult>;
 };
 
 
 export type MutationUserCreateArgs = {
   input: UserCreateInput;
+};
+
+
+export type MutationUserEditArgs = {
+  input: UserEditInput;
 };
 
 export type Query = {
@@ -45,6 +51,16 @@ export type UserCreateResult = {
   user: User;
 };
 
+export type UserEditInput = {
+  id: Scalars['Float']['input'];
+  name: Scalars['String']['input'];
+};
+
+export type UserEditResult = {
+  __typename?: 'UserEditResult';
+  user: User;
+};
+
 export type UserPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -57,6 +73,14 @@ export type UserCreateMutationVariables = Exact<{
 
 export type UserCreateMutation = { __typename?: 'Mutation', userCreate: Array<{ __typename?: 'UserCreateResult', user: { __typename?: 'User', id: number } }> };
 
+export type UserEditMutationVariables = Exact<{
+  input: UserEditInput;
+}>;
+
+
+export type UserEditMutation = { __typename?: 'Mutation', userEdit: Array<{ __typename?: 'UserEditResult', user: { __typename?: 'User', id: number } }> };
+
 
 export const UserPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"UserPage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<UserPageQuery, UserPageQueryVariables>;
 export const UserCreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UserCreate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"userCreate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<UserCreateMutation, UserCreateMutationVariables>;
+export const UserEditDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UserEdit"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserEditInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"userEdit"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<UserEditMutation, UserEditMutationVariables>;

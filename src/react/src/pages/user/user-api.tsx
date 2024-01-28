@@ -3,7 +3,11 @@ import axios from "axios";
 
 import { ApiMode, User } from "./user-page";
 import { useMutation, useQuery } from "@apollo/client";
-import { UserCreateDocument, UserPageDocument } from "~/core/graphql/generated";
+import {
+  UserCreateDocument,
+  UserEditDocument,
+  UserPageDocument,
+} from "~/core/graphql/generated";
 
 export const useUserApi = (apiMode: ApiMode) => {
   const [name, setName] = useState("");
@@ -15,7 +19,11 @@ export const useUserApi = (apiMode: ApiMode) => {
     skip: apiMode !== "graphql",
   });
 
-  const [mutate] = useMutation(UserCreateDocument, {
+  const [createMutation] = useMutation(UserCreateDocument, {
+    refetchQueries: [UserPageDocument],
+  });
+
+  const [editMutation] = useMutation(UserEditDocument, {
     refetchQueries: [UserPageDocument],
   });
 
@@ -26,7 +34,7 @@ export const useUserApi = (apiMode: ApiMode) => {
 
   const saveData = async () => {
     if (apiMode === "graphql") {
-      mutate({
+      createMutation({
         variables: {
           input: {
             name,
@@ -41,8 +49,20 @@ export const useUserApi = (apiMode: ApiMode) => {
 
   const updateData = async (id: number) => {
     if (!newName) alert("이름을 입력해주세요");
-    await axios.put(`/api/users/${id}`, { name: newName });
-    setQueryState((prev) => !prev);
+
+    if (apiMode === "graphql") {
+      editMutation({
+        variables: {
+          input: {
+            id,
+            name: newName,
+          },
+        },
+      });
+    } else {
+      await axios.put(`/api/users/${id}`, { name: newName });
+      setQueryState((prev) => !prev);
+    }
   };
 
   const deleteData = async (id: number) => {

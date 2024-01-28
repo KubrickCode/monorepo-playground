@@ -12,3 +12,11 @@ mutation UserCreate($input: UserCreateInput!) {
     }
   }
 }
+
+mutation UserEdit($input: UserEditInput!) {
+  userEdit(input: $input) {
+    user {
+      id
+    }
+  }
+}
