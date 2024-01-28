@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 import { ApiMode, User } from "./user-page";
@@ -16,6 +16,17 @@ export const useUserApi = (apiMode: ApiMode) => {
   const [users, setUsers] = useState<User[]>([]);
   const [queryState, setQueryState] = useState(false);
 
+  const apiGroup = useMemo(() => {
+    switch (apiMode) {
+      case "restNest":
+        return "/api";
+      case "graphqlNest":
+        return "/graphql";
+      case "restFiber":
+        return "/go";
+    }
+  }, [apiMode]);
+
   const { data: gqlData } = useQuery(UserPageDocument, {
     skip: apiMode !== "graphqlNest",
   });
@@ -31,11 +42,6 @@ export const useUserApi = (apiMode: ApiMode) => {
   const [deleteMutation] = useMutation(UserDeleteDocument, {
     refetchQueries: [UserPageDocument],
   });
-
-  const getData = async () => {
-    const { data } = await axios.get("/api/users");
-    setUsers(data);
-  };
 
   const saveData = async () => {
     if (apiMode === "graphqlNest") {
@@ -86,12 +92,16 @@ export const useUserApi = (apiMode: ApiMode) => {
   };
 
   useEffect(() => {
-    if (apiMode === "graphqlNest" && gqlData) {
-      setUsers(gqlData.users);
+    if (apiMode === "graphqlNest") {
+      gqlData && setUsers(gqlData.users);
     } else {
+      const getData = async () => {
+        const { data } = await axios.get(`${apiGroup}/users`);
+        setUsers(data);
+      };
       getData();
     }
-  }, [apiMode, gqlData, queryState]);
+  }, [apiMode, apiGroup, gqlData, queryState]);
 
   return {
     deleteData,

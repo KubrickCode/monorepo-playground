@@ -15,7 +15,7 @@ func main() {
 
     api := app.Group("/go")
  
-    api.Get("/", func(c *fiber.Ctx) error {
+    api.Get("/users", func(c *fiber.Ctx) error {
         users, err := db.GetUsers()
         if err != nil {
             return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

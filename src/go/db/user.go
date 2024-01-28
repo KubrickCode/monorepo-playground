@@ -7,8 +7,8 @@ import (
 )
 
 type User struct {
-  ID int `gorm:"column:id;primaryKey"`
-	Name string `gorm:"column:name;unique"`
+  ID int `gorm:"column:id;primaryKey" json:"id"`
+	Name string `gorm:"column:name;unique" json:"name"`
 }
 
 var DB *gorm.DB
