@@ -9,12 +9,15 @@ import {
   UserEditDocument,
   UserPageDocument,
 } from "~/core/graphql/generated";
+import { useToast } from "@chakra-ui/react";
 
 export const useUserApi = (apiMode: ApiMode) => {
   const [name, setName] = useState("");
   const [newName, setNewName] = useState("");
   const [users, setUsers] = useState<User[]>([]);
   const [queryState, setQueryState] = useState(false);
+
+  const toast = useToast();
 
   const apiGroup = useMemo(() => {
     switch (apiMode) {
@@ -56,6 +59,11 @@ export const useUserApi = (apiMode: ApiMode) => {
       await axios.post(`${apiGroup}/users`, { name });
       setQueryState((prev) => !prev);
     }
+
+    toast({
+      description: `생성 완료 - 이름: ${name}`,
+      isClosable: true,
+    });
   };
 
   const updateData = async (id: number) => {
@@ -74,6 +82,11 @@ export const useUserApi = (apiMode: ApiMode) => {
       await axios.put(`${apiGroup}/users/${id}`, { name: newName });
       setQueryState((prev) => !prev);
     }
+
+    toast({
+      description: `수정 완료 - ID: ${id} 이름: ${newName}`,
+      isClosable: true,
+    });
   };
 
   const deleteData = async (id: number) => {
@@ -89,6 +102,11 @@ export const useUserApi = (apiMode: ApiMode) => {
       await axios.delete(`${apiGroup}/users/${id}`);
       setQueryState((prev) => !prev);
     }
+
+    toast({
+      description: `삭제 완료 - ID: ${id}`,
+      isClosable: true,
+    });
   };
 
   useEffect(() => {
@@ -101,7 +119,11 @@ export const useUserApi = (apiMode: ApiMode) => {
       };
       getData();
     }
-  }, [apiMode, apiGroup, gqlData, queryState]);
+    toast({
+      description: `요청 완료 - ${apiMode}`,
+      isClosable: true,
+    });
+  }, [apiMode, apiGroup, gqlData, queryState, toast]);
 
   return {
     deleteData,
