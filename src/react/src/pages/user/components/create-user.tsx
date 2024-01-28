@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text } from "@chakra-ui/react";
+import { Button, Flex, FormLabel, Input, Text } from "@chakra-ui/react";
 
 type Props = {
   saveData: () => void;
@@ -7,14 +7,13 @@ type Props = {
 
 export const CreateUser = ({ saveData, setName }: Props) => {
   return (
-    <Box>
-      <Text>유저 생성</Text>
+    <Flex gap={3}>
       <Input
         onChange={(e) => setName(e.target.value)}
         placeholder="이름"
         w={40}
       />
-      <Button onClick={saveData}>저장</Button>
-    </Box>
+      <Button onClick={saveData}>데이터 생성</Button>
+    </Flex>
   );
 };
