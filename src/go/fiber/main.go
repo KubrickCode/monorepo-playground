@@ -1,6 +1,10 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"db"
+
+	"github.com/gofiber/fiber/v2"
+)
  
 func main() {
     config := fiber.Config{
@@ -12,7 +16,14 @@ func main() {
     api := app.Group("/go")
  
     api.Get("/", func(c *fiber.Ctx) error {
-        return c.SendString("Hello World")
+        users, err := db.GetUsers()
+        if err != nil {
+            return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+                "error": "Could not fetch users",
+            })
+        }
+
+        return c.JSON(users)
     })
  
     app.Listen(":3002")
