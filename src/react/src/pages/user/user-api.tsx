@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { ApiMode, User } from "./user-page";
-import { useQuery } from "@apollo/client";
-import { UserPageDocument } from "~/core/graphql/generated";
+import { useMutation, useQuery } from "@apollo/client";
+import { UserCreateDocument, UserPageDocument } from "~/core/graphql/generated";
 
 export const useUserApi = (apiMode: ApiMode) => {
   const [name, setName] = useState("");
@@ -15,14 +15,28 @@ export const useUserApi = (apiMode: ApiMode) => {
     skip: apiMode !== "graphql",
   });
 
+  const [mutate] = useMutation(UserCreateDocument, {
+    refetchQueries: [UserPageDocument],
+  });
+
   const getData = async () => {
     const { data } = await axios.get("/api/users");
     setUsers(data);
   };
 
   const saveData = async () => {
-    await axios.post("/api/users", { name });
-    setQueryState((prev) => !prev);
+    if (apiMode === "graphql") {
+      mutate({
+        variables: {
+          input: {
+            name,
+          },
+        },
+      });
+    } else {
+      await axios.post("/api/users", { name });
+      setQueryState((prev) => !prev);
+    }
   };
 
   const updateData = async (id: number) => {

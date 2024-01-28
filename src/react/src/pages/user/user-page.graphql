@@ -4,3 +4,11 @@ query UserPage {
     name
   }
 }
+
+mutation UserCreate($input: UserCreateInput!) {
+  userCreate(input: $input) {
+    user {
+      id
+    }
+  }
+}

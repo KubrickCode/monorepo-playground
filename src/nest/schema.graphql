@@ -2,6 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Mutation {
+  userCreate(input: UserCreateInput!): [UserCreateResult!]!
+}
+
 type Query {
   users: [User!]!
 }
@@ -9,4 +13,12 @@ type Query {
 type User {
   id: Float!
   name: String!
+}
+
+input UserCreateInput {
+  name: String!
+}
+
+type UserCreateResult {
+  user: User!
 }
