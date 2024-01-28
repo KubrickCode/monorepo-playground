@@ -72,6 +72,19 @@ func main() {
 
         return c.JSON(user)
     })
+
+    userAPI.Delete("/:id", func(c *fiber.Ctx) error {
+        id, _ := strconv.Atoi(c.Params("id", ""))
+
+        err := db.DeleteUser(id)
+        if err != nil {
+            return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+                "error": "Could not delete user",
+            })
+        }
+
+        return c.SendStatus(fiber.StatusNoContent)
+    })
  
     app.Listen(":3002")
 }

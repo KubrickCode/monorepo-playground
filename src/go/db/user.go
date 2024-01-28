@@ -49,3 +49,8 @@ func UpdateUser(id int, name string) (User, error) {
 	result := DB.Save(&user)
 	return user, result.Error
 }
+
+func DeleteUser(id int) error {
+	result := DB.Delete(&User{}, id)
+	return result.Error
+}

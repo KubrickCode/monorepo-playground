@@ -86,7 +86,7 @@ export const useUserApi = (apiMode: ApiMode) => {
         },
       });
     } else {
-      await axios.delete(`/api/users/${id}`);
+      await axios.delete(`${apiGroup}/users/${id}`);
       setQueryState((prev) => !prev);
     }
   };
