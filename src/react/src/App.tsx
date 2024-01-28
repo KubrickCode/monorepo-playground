@@ -40,6 +40,11 @@ export const App = () => {
     await getData();
   };
 
+  const deleteData = async (id: number) => {
+    await axios.delete(`/api/${id}`);
+    await getData();
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -56,6 +61,7 @@ export const App = () => {
                   <Th>ID</Th>
                   <Th>이름</Th>
                   <Th>수정</Th>
+                  <Th>삭제</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -70,6 +76,14 @@ export const App = () => {
                         onChange={(e) => setNewName(e.target.value)}
                       />
                       <Button onClick={() => updateData(user.id)}>저장</Button>
+                    </Td>
+                    <Td>
+                      <Button
+                        colorScheme="red"
+                        onClick={() => deleteData(user.id)}
+                      >
+                        삭제
+                      </Button>
                     </Td>
                   </Tr>
                 ))}
