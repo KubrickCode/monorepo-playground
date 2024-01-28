@@ -13,7 +13,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface User {
   id: number;
@@ -22,6 +22,7 @@ interface User {
 
 export const App = () => {
   const [name, setName] = useState("");
+  const [newName, setNewName] = useState("");
   const [users, setUsers] = useState<User[]>([]);
 
   const getData = async () => {
@@ -33,6 +34,16 @@ export const App = () => {
     await axios.post("/api", { name });
   };
 
+  const updateData = async (id: number) => {
+    if (!newName) alert("이름을 입력해주세요");
+    await axios.put(`/api/${id}`, { name: newName });
+    await getData();
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <ChakraProvider>
       <Flex direction="column" gap={10}>
@@ -42,8 +53,9 @@ export const App = () => {
             <Table variant="simple">
               <Thead>
                 <Tr>
-                  <Th>id</Th>
-                  <Th>name</Th>
+                  <Th>ID</Th>
+                  <Th>이름</Th>
+                  <Th>수정</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -51,6 +63,14 @@ export const App = () => {
                   <Tr key={user.id}>
                     <Td>{user.id}</Td>
                     <Td>{user.name}</Td>
+                    <Td>
+                      <Input
+                        placeholder="이름"
+                        w={40}
+                        onChange={(e) => setNewName(e.target.value)}
+                      />
+                      <Button onClick={() => updateData(user.id)}>저장</Button>
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -58,7 +78,11 @@ export const App = () => {
           </TableContainer>
         </Box>
         <Box>
-          <Input onChange={(e) => setName(e.target.value)} placeholder="이름" />
+          <Input
+            onChange={(e) => setName(e.target.value)}
+            placeholder="이름"
+            w={40}
+          />
           <Button onClick={saveData}>저장</Button>
         </Box>
       </Flex>

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller('api')
@@ -12,7 +12,11 @@ export class AppController {
 
   @Post()
   async post(@Body('name') name: string) {
-    console.log(name);
     return await this.appService.post(name);
+  }
+
+  @Put(':id')
+  async put(@Param('id') id: string, @Body('name') name: string) {
+    return await this.appService.put(Number(id), name);
   }
 }
