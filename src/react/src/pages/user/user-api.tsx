@@ -71,7 +71,7 @@ export const useUserApi = (apiMode: ApiMode) => {
         },
       });
     } else {
-      await axios.put(`/api/users/${id}`, { name: newName });
+      await axios.put(`${apiGroup}/users/${id}`, { name: newName });
       setQueryState((prev) => !prev);
     }
   };

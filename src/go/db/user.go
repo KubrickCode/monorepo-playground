@@ -40,3 +40,12 @@ func CreateUser(name string) (User, error) {
 	result := DB.Create(&user)
 	return user, result.Error
 }
+
+func UpdateUser(id int, name string) (User, error) {
+	user := User{
+		ID: id,
+		Name: name,
+	}
+	result := DB.Save(&user)
+	return user, result.Error
+}
