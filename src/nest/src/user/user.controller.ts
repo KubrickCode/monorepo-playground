@@ -16,12 +16,12 @@ export class UserController {
 
   @Get()
   async get() {
-    return await this.userService.get();
+    return await this.userService.getAll();
   }
 
   @Post()
   async post(@Body('name') name: string) {
-    return await this.userService.post(name);
+    return await this.userService.create(name);
   }
 
   @Put(':id')

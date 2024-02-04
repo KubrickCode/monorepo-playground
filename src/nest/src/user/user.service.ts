@@ -14,7 +14,7 @@ export class UserService {
     private readonly typeOrmUserRepository: Repository<User>,
   ) {}
 
-  async get() {
+  async getAll() {
     const orm = getRandomOrm();
     if (orm === Orm.TypeOrm) {
       return await this.typeOrmUserRepository.find({ order: { id: 'asc' } });
@@ -27,7 +27,7 @@ export class UserService {
     }
   }
 
-  async post(name: string) {
+  async create(name: string) {
     const orm = getRandomOrm();
     if (orm === Orm.TypeOrm) {
       return await this.typeOrmUserRepository.insert({ name });

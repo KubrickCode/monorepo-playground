@@ -27,7 +27,7 @@ export class UserCreateMutation {
 
   @Mutation(() => [UserCreateResult], { name: 'userCreate' })
   async create(@Args('input') input: UserCreateInput) {
-    const user = await this.userService.post(input.name);
+    const user = await this.userService.create(input.name);
     return { user };
   }
 }

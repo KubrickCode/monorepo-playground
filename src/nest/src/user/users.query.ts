@@ -8,6 +8,6 @@ export class UsersQuery {
 
   @Query(() => [User], { name: 'users' })
   async get() {
-    return await this.userService.get();
+    return await this.userService.getAll();
   }
 }
