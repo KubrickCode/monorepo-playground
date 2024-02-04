@@ -30,7 +30,7 @@ export class UserEditMutation {
 
   @Mutation(() => [UserEditResult], { name: 'userEdit' })
   async edit(@Args('input') input: UserEditInput) {
-    const user = await this.userService.put(input.id, input.name);
+    const user = await this.userService.update(input.id, input.name);
     return { user };
   }
 }

@@ -40,26 +40,21 @@ export class UserService {
     }
   }
 
-  async put(id: number, name: string) {
+  async update(id: number, name: string) {
     const orm = getRandomOrm();
     if (orm === Orm.TypeOrm) {
-      return await this.typeOrmUserRepository.upsert(
-        { id, name },
+      return await this.typeOrmUserRepository.update(
+        { id },
         {
-          conflictPaths: ['id'],
-          skipUpdateIfNoValuesChanged: true,
-          upsertType: 'on-conflict-do-update',
+          name,
         },
       );
     } else {
-      return await this.prisma.user.upsert({
+      return await this.prisma.user.update({
         where: {
           id,
         },
-        create: {
-          name,
-        },
-        update: {
+        data: {
           name,
         },
       });

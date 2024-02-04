@@ -26,7 +26,7 @@ export class UserController {
 
   @Put(':id')
   async put(@Param('id') id: string, @Body('name') name: string) {
-    return await this.userService.put(Number(id), name);
+    return await this.userService.update(Number(id), name);
   }
 
   @Delete(':id')
