@@ -9,6 +9,7 @@
     "cweijan.vscode-redis-client",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
+    "fivethree.vscode-svelte-snippets",
     "formulahendry.code-runner",
     "gitHub.vscode-pull-request-github",
     "github.codespaces",
@@ -27,6 +28,7 @@
     "prisma.prisma",
     "rangav.vscode-thunder-client",
     "skellock.just",
+    "svelte.svelte-vscode",
     "wayou.vscode-todo-highlight",
     "zengxingxin.sort-js-object-keys"
   ]
