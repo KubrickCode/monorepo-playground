@@ -1,5 +1,6 @@
 root_dir := justfile_directory()
 nest_dir := root_dir + "/src/nest"
+next_dir := root_dir + "/src/next"
 react_dir := root_dir + "/src/react"
 fiber_dir := root_dir + "/src/go/fiber"
 
@@ -12,9 +13,12 @@ codegen:
   cd "{{ react_dir }}"
   yarn codegen
 
-deps: deps-nest deps-react
+deps: deps-nest deps-next deps-react
 
 deps-nest:
+  cd "{{ nest_dir }}" && yarn install
+
+deps-next:
   cd "{{ nest_dir }}" && yarn install
 
 deps-react:
@@ -81,6 +85,11 @@ run svc *args:
     nest)
       cd src/nest
       LOGGER_LEVEL=debug PORT=3001 yarn start:dev
+      ;;
+
+    next)
+      cd src/next
+      LOGGER_LEVEL=debug PORT=3003 yarn dev
       ;;
 
     react)
