@@ -1,18 +1,15 @@
 import { LinkButton } from "../../core/link-button";
-import { HomeAPI } from "./api";
+import { getUsers } from "./api";
 
 const Home = async () => {
-  const { users, gqlUsers } = await HomeAPI();
+  const {
+    data: { users },
+  } = await getUsers();
 
   return (
     <>
       <LinkButton href="/">Go Root</LinkButton>
-      {users.map((user: any) => (
-        <div key={user.id}>
-          <p>{user.name}</p>
-        </div>
-      ))}
-      {gqlUsers.users.map((user: any) => (
+      {users.map((user) => (
         <div key={user.id}>
           <p>{user.name}</p>
         </div>
