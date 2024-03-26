@@ -1,7 +1,7 @@
 "use client";
 
 import { LoginButton } from "./_components/login-button";
-import { login } from "./_utils/login";
+import { login } from "./utils";
 
 const LoginPage = () => (
   <>

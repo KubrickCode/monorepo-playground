@@ -1,4 +1,4 @@
-import { LinkButton } from "@/components/link-button/link-button";
+import { LinkButton } from "../../core/link-button";
 
 const Home = () => <LinkButton href="/">Go Root</LinkButton>;
 
