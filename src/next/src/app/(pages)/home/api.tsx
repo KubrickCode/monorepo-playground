@@ -1,18 +1,10 @@
 import axios from "axios";
-import { gql } from "@apollo/client";
 import { client } from "@/app/core/graphql/graphql";
-
-const query = gql`
-  query Home {
-    users {
-      name
-    }
-  }
-`;
+import { HomePageDocument } from "@/app/core/graphql/generated";
 
 export const HomeAPI = async () => {
   const { data: users } = await axios.get("http://localhost:3001/api/users");
-  const { data: gqlUsers } = await client.query({ query });
+  const { data: gqlUsers } = await client.query({ query: HomePageDocument });
 
   return { users, gqlUsers };
 };

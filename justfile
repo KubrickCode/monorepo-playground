@@ -10,7 +10,7 @@ default:
 codegen:
   #!/usr/bin/env bash
   set -euox pipefail
-  cd "{{ react_dir }}"
+  cd "{{ next_dir }}"
   yarn codegen
 
 deps: deps-nest deps-next deps-react
