@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -7,9 +8,9 @@ type LinkButtonProps = {
 };
 
 export const LinkButton = ({ href, children }: LinkButtonProps) => (
-  <button>
+  <Button colorScheme="primary">
     <Link href={href} style={{ textDecoration: "none" }}>
       {children}
     </Link>
-  </button>
+  </Button>
 );
