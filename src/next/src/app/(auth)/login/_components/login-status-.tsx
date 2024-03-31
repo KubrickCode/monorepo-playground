@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthState } from "@/core/store";
+import { useAuthState } from "@core/store";
 
 export const LoginStatus = () => {
   const {

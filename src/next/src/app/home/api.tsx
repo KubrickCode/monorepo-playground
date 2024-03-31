@@ -1,5 +1,4 @@
-import { client } from "@/core/graphql/graphql";
-import { HomePageDocument } from "@/core/graphql/generated";
+import { client, HomePageDocument } from "@core/graphql";
 
 export const getUsers = async () => {
   return await client.query({ query: HomePageDocument });
