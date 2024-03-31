@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthState } from "@/app/core/store";
+import { useAuthState } from "@/core/store";
 import { Button } from "@chakra-ui/react";
 
 export const SignButton = () => {

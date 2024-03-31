@@ -1,4 +1,4 @@
-import { LinkButton } from "./core/link-button";
+import { LinkButton } from "../core/link-button";
 
 const Root = () => (
   <>
