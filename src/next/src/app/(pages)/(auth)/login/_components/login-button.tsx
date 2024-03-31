@@ -1,7 +1,11 @@
-type LoginButtonProps = {
-  onClick: () => void;
-};
+import { useAuthState } from "@/app/core/store";
+import { Button } from "@chakra-ui/react";
 
-export const LoginButton = ({ onClick }: LoginButtonProps) => (
-  <button onClick={onClick}>Login</button>
-);
+export const LoginButton = () => {
+  const { login } = useAuthState();
+  return (
+    <Button colorScheme="primary" onClick={login}>
+      Login
+    </Button>
+  );
+};
