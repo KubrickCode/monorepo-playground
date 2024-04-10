@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@core/theme";
 import { Header } from "@core/header";
+import { ApolloWrapper } from "@core/graphql";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
-          <Header />
-          {children}
+          <ApolloWrapper>
+            <Header />
+            {children}
+          </ApolloWrapper>
         </ThemeProvider>
       </body>
     </html>

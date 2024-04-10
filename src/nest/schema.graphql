@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Mutation {
-  userCreate(input: UserCreateInput!): [UserCreateResult!]!
+  userCreate(input: UserCreateInput!): UserCreateResult!
   userDelete(input: UserDeleteInput!): [UserDeleteResult!]!
   userEdit(input: UserEditInput!): [UserEditResult!]!
 }
@@ -22,7 +22,7 @@ input UserCreateInput {
 }
 
 type UserCreateResult {
-  user: User!
+  ok: Boolean!
 }
 
 input UserDeleteInput {

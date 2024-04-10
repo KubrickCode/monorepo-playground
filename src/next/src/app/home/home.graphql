@@ -4,3 +4,9 @@ query HomePage {
     name
   }
 }
+
+mutation HomePageUserCreate($input: UserCreateInput!) {
+  userCreate(input: $input) {
+    ok
+  }
+}

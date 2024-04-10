@@ -17,7 +17,7 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  userCreate: Array<UserCreateResult>;
+  userCreate: UserCreateResult;
   userDelete: Array<UserDeleteResult>;
   userEdit: Array<UserEditResult>;
 };
@@ -54,7 +54,7 @@ export type UserCreateInput = {
 
 export type UserCreateResult = {
   __typename?: 'UserCreateResult';
-  user: User;
+  ok: Scalars['Boolean']['output'];
 };
 
 export type UserDeleteInput = {
@@ -81,5 +81,13 @@ export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type HomePageQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', id: number, name: string }> };
 
+export type HomePageUserCreateMutationVariables = Exact<{
+  input: UserCreateInput;
+}>;
+
+
+export type HomePageUserCreateMutation = { __typename?: 'Mutation', userCreate: { __typename?: 'UserCreateResult', ok: boolean } };
+
 
 export const HomePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HomePage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<HomePageQuery, HomePageQueryVariables>;
+export const HomePageUserCreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"HomePageUserCreate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserCreateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"userCreate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ok"}}]}}]}}]} as unknown as DocumentNode<HomePageUserCreateMutation, HomePageUserCreateMutationVariables>;
