@@ -2,19 +2,31 @@
 
 import { Button, Flex, FormLabel, Input } from "@chakra-ui/react";
 import { useMutationForm } from "@core/form";
-import { HomePageDocument, HomePageUserCreateDocument } from "@core/graphql";
+import {
+  HomePageDocument,
+  HomePageUserCreateDocument,
+  HomePageUserCreateMutation,
+  UserCreateInput,
+} from "@core/graphql";
 import { FormProvider } from "react-hook-form";
 import { z } from "zod";
 
-const schema = z.object({
-  name: z.string().min(1),
-});
-
 export const CreateUserForm = () => {
-  const { onSubmit, ...useFormReturn } = useMutationForm({
+  const { onSubmit, mutationResult, ...useFormReturn } = useMutationForm<
+    UserCreateInput,
+    HomePageUserCreateMutation
+  >({
+    defaultValues: {
+      name: "abc",
+    },
     mutation: HomePageUserCreateDocument,
+    onComplete: (data) => {
+      console.log(data?.userCreate.ok);
+    },
     refetchQueries: [HomePageDocument],
-    schema,
+    schema: {
+      name: z.string().min(1),
+    },
   });
 
   return (
