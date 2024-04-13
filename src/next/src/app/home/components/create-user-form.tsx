@@ -1,43 +1,21 @@
 "use client";
 
-import {  Flex } from "@chakra-ui/react";
-import { Field,  Input, Label, SubmitButton, useMutationForm } from "@core/form";
-import {
-  HomePageDocument,
-  HomePageUserCreateDocument,
-  HomePageUserCreateMutation,
-  UserCreateInput,
-} from "@core/graphql";
+import { Field, Form, Input, Label, SubmitButton } from "@core/form";
 import { FormProvider } from "react-hook-form";
-import { z } from "zod";
+import { useCreateUserForm } from "./api/use-create-user-form";
 
 export const CreateUserForm = () => {
-  const { onSubmit, mutationResult, ...useFormReturn } = useMutationForm<
-    UserCreateInput,
-    HomePageUserCreateMutation
-  >({
-    defaultValues: {
-      name: "abc",
-    },
-    mutation: HomePageUserCreateDocument,
-    onComplete: (data) => {
-      console.log(data?.userCreate.ok);
-    },
-    refetchQueries: [HomePageDocument],
-    schema: {
-      name: z.string().min(1),
-    },
-  });
+  const { onSubmit, ...useFormReturn } = useCreateUserForm();
 
   return (
     <FormProvider {...useFormReturn}>
-      <Flex as="form" direction="column" gap={2} onSubmit={onSubmit} width="sm">
+      <Form onSubmit={onSubmit} width="sm">
         <Field>
           <Label>이름</Label>
           <Input name="name" />
         </Field>
         <SubmitButton />
-      </Flex>
+      </Form>
     </FormProvider>
   );
 };
