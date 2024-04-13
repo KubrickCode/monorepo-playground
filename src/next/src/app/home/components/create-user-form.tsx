@@ -2,10 +2,10 @@
 
 import { Field, Form, Input, Label, SubmitButton } from "@core/form";
 import { FormProvider } from "react-hook-form";
-import { useCreateUserForm } from "./api/use-create-user-form";
+import { useCreateUserMutation } from "./api";
 
 export const CreateUserForm = () => {
-  const { onSubmit, ...useFormReturn } = useCreateUserForm();
+  const { onSubmit, ...useFormReturn } = useCreateUserMutation();
 
   return (
     <FormProvider {...useFormReturn}>

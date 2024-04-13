@@ -1,3 +1,4 @@
+import { useSuspenseQuery } from "@apollo/client";
 import { useMutationForm } from "@core/form";
 import {
   HomePageDocument,
@@ -7,7 +8,7 @@ import {
 } from "@core/graphql";
 import { z } from "zod";
 
-export const useCreateUserForm = () => {
+export const useCreateUserMutation = () => {
   return useMutationForm<UserCreateInput, HomePageUserCreateMutation>({
     defaultValues: {
       name: "abc",
@@ -21,4 +22,9 @@ export const useCreateUserForm = () => {
       name: z.string().min(1),
     },
   });
+};
+
+export const useGetUsersQuery = () => {
+  const { data } = useSuspenseQuery(HomePageDocument);
+  return data.users;
 };

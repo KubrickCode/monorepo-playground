@@ -1,9 +1,9 @@
 "use client";
 
-import { useGetUsers } from "./api/use-get-users";
+import { useGetUsersQuery } from "./api";
 
 export const Users = () => {
-  const users = useGetUsers();
+  const users = useGetUsersQuery();
 
   return users.map((user) => (
     <div key={user.id}>
