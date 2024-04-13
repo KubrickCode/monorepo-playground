@@ -1,12 +1,11 @@
 "use client";
 
-import { useSuspenseQuery } from "@apollo/client";
-import { HomePageDocument } from "@core/graphql";
+import { useGetUsers } from "./api/use-get-users";
 
 export const Users = () => {
-  const { data } = useSuspenseQuery(HomePageDocument);
+  const users = useGetUsers();
 
-  return data.users.map((user) => (
+  return users.map((user) => (
     <div key={user.id}>
       <p>{user.name}</p>
     </div>
