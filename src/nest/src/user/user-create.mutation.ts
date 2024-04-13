@@ -7,6 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { UserService } from './user.service';
+import { UserInputError } from 'apollo-server-express';
 
 @InputType()
 export class UserCreateInput {
@@ -26,6 +27,11 @@ export class UserCreateMutation {
 
   @Mutation(() => UserCreateResult, { name: 'userCreate' })
   async create(@Args('input') input: UserCreateInput) {
+    if (input.name.length < 2) {
+      throw new UserInputError('Name is too short', {
+        field: 'name',
+      });
+    }
     await this.userService.create(input.name);
     return { ok: true };
   }
