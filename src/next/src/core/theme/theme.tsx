@@ -6,6 +6,7 @@ import { SaasProvider, theme as baseTheme } from "@saas-ui/react";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
 const colors = {
+  danger: "#F04134",
   primary: {
     "50": "#f7f7fe",
     "100": "#e0ddfa",
