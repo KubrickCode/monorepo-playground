@@ -1,7 +1,7 @@
 "use client";
 
-import { Button, Flex, FormLabel, Input } from "@chakra-ui/react";
-import { FieldError, useMutationForm } from "@core/form";
+import { Button, Flex, FormLabel } from "@chakra-ui/react";
+import { Field, FieldError, Input, Label, useMutationForm } from "@core/form";
 import {
   HomePageDocument,
   HomePageUserCreateDocument,
@@ -31,12 +31,13 @@ export const CreateUserForm = () => {
 
   return (
     <FormProvider {...useFormReturn}>
-      <Flex alignItems="center" as="form" onSubmit={onSubmit} width="md">
-        <FormLabel minWidth="3rem">이름</FormLabel>
-        <Input {...useFormReturn.register("name")} />
+      <Flex as="form" direction="column" gap={2} onSubmit={onSubmit} width="sm">
+        <Field>
+          <Label>이름</Label>
+          <Input name="name" />
+        </Field>
         <Button type="submit">생성</Button>
       </Flex>
-      <FieldError name="name" />
     </FormProvider>
   );
 };
