@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@core/theme";
 import { Header } from "@core/header";
 import { ApolloWrapper } from "@core/graphql";
+import { AuthContext } from "@core/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
-          <ApolloWrapper>
-            <Header />
-            {children}
-          </ApolloWrapper>
+          <AuthContext>
+            <ApolloWrapper>
+              <Header />
+              {children}
+            </ApolloWrapper>
+          </AuthContext>
         </ThemeProvider>
       </body>
     </html>
