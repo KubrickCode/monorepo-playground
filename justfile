@@ -104,3 +104,8 @@ run svc *args:
       
 
   esac
+
+sync-locales:
+  #!/usr/bin/env bash
+  set -euox pipefail
+  rsync -av --delete "{{ next_dir }}/locale/" "{{ nest_dir }}/locale/"
