@@ -6762,6 +6762,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kubrick-code-npm-test@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "kubrick-code-npm-test@npm:0.0.2"
+  checksum: 10c0/60981b3074e1622248feab081ad256602967c47d04bf33c7c08e7c1e7d6e26b4226e48ee7cb6e2a5603406ea13eae669bb9bd67ece85acfaf12148a1b2232bb5
+  languageName: node
+  linkType: hard
+
 "language-subtag-registry@npm:^0.3.20":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -7232,6 +7239,7 @@ __metadata:
     framer-motion: "npm:^11.0.24"
     graphql: "npm:^16.8.1"
     graphql-codegen: "npm:^0.4.0"
+    kubrick-code-npm-test: "npm:^0.0.2"
     next: "npm:14.1.4"
     next-auth: "npm:^4.24.7"
     react: "npm:^18"
