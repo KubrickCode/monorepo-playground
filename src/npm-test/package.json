@@ -1,0 +1,22 @@
+{
+  "name": "kubrick-code-npm-test",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "prepack": "yarn build",
+    "build": "yarn build:tsc",
+    "build:tsc": "yarn tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  }
+}
