@@ -17,10 +17,12 @@
     "typescript": "^5.4.5"
   },
   "scripts": {
+    "build-ts": "tsc --project tsconfig.json",
     "prepack": "cd src && cd test-studio && yarn build && cd ../../ && node build.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "build": "yarn build-ts && yarn prepack"
   },
   "bin": {
-    "studio": "./dist/test-studio-server/main.js"
+    "studio": "./dist/main.js"
   }
 }
