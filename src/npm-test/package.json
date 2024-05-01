@@ -21,6 +21,6 @@
     "clean": "rm -rf dist"
   },
   "bin": {
-    "studio": "./src/test-studio-server/main.js"
+    "studio": "./dist/test-studio-server/main.js"
   }
 }

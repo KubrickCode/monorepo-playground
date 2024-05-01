@@ -10,11 +10,9 @@ async function copyTestStudioDist() {
 
   try {
     await fs.ensureDir(targetDir);
-
     await fs.copy(sourceDir, targetDir, {
       overwrite: true,
     });
-
     console.log("Successfully copied test-studio/dist to dist/");
   } catch (error) {
     console.error("Failed to copy files:", error);
@@ -22,5 +20,18 @@ async function copyTestStudioDist() {
   }
 }
 
-// Run the function
-copyTestStudioDist();
+async function addShebangToMain() {
+  const mainJsPath = path.join(__dirname, "dist/test-studio-server/main.js");
+  try {
+    const data = await fs.readFile(mainJsPath, "utf8");
+    const newData = `#!/usr/bin/env node\n${data}`;
+    await fs.writeFile(mainJsPath, newData, "utf8");
+    console.log("Shebang added successfully to main.js");
+  } catch (error) {
+    console.error("Failed to add shebang:", error);
+    process.exit(1);
+  }
+}
+
+// Run the functions
+copyTestStudioDist().then(addShebangToMain);
