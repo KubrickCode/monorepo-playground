@@ -23,10 +23,14 @@ async function copyTestStudioDist() {
 async function addShebangToMain() {
   const mainJsPath = path.join(__dirname, "dist/test-studio-server/main.js");
   try {
-    const data = await fs.readFile(mainJsPath, "utf8");
-    const newData = `#!/usr/bin/env node\n${data}`;
-    await fs.writeFile(mainJsPath, newData, "utf8");
-    console.log("Shebang added successfully to main.js");
+    let data = await fs.readFile(mainJsPath, "utf8");
+    if (!data.startsWith("#!/usr/bin/env node")) {
+      data = `#!/usr/bin/env node\n${data}`;
+      await fs.writeFile(mainJsPath, data, "utf8");
+      console.log("Shebang added successfully to main.js");
+    } else {
+      console.log("Shebang already exists in main.js");
+    }
   } catch (error) {
     console.error("Failed to add shebang:", error);
     process.exit(1);
