@@ -14,24 +14,30 @@ const port = 4321;
 app.use(express.static(path.join(__dirname, "../../dist")));
 app.use(express.json({ extended: true }));
 
+const configPath = path.resolve(process.cwd(), "kubrick-config.json");
+let config = {};
+
+// Try reading the configuration file
+try {
+  config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+} catch (error) {
+  console.error(
+    "Failed to read configuration file at " + configPath + ":",
+    error
+  );
+  process.exit(1); // Optionally exit if config is critical
+}
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../dist/index.html"));
 });
 
 app.post("/create-json", (req, res) => {
-  let filePath = req.body.path;
-  console.log(filePath);
+  const filePath = path.resolve(
+    process.cwd(),
+    config.jsonFilePath || "./output.json"
+  );
   const data = { test: "hello world" };
-
-  if (!filePath || typeof filePath !== "string") {
-    return res.status(400).send({ message: "Invalid file path provided." });
-  }
-
-  filePath = path.resolve(__dirname, filePath);
-
-  if (!filePath.endsWith(".json")) {
-    filePath += ".json";
-  }
 
   const dir = path.dirname(filePath);
   fs.mkdir(dir, { recursive: true }, (err) => {

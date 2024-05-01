@@ -9,9 +9,7 @@ export const App = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ path }),
     });
-    console.log(response);
     const data = await response.json();
     alert(data.message);
   };
