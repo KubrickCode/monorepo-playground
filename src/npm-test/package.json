@@ -1,6 +1,6 @@
 {
   "name": "kubrick-code-npm-test",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -21,6 +21,6 @@
     "clean": "rm -rf dist"
   },
   "bin": {
-    "studio": "./cli.js"
+    "studio": "./src/test-studio-server/main.js"
   }
 }

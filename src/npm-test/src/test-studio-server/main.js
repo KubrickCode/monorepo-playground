@@ -11,11 +11,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 4321;
 
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "../../dist")));
 app.use(express.json({ extended: true }));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist/index.html"));
+  res.sendFile(path.join(__dirname, "../../dist/index.html"));
 });
 
 app.post("/create-json", (req, res) => {

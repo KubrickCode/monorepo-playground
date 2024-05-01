@@ -7037,15 +7037,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kubrick-code-npm-test@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "kubrick-code-npm-test@npm:0.0.15"
+"kubrick-code-npm-test@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "kubrick-code-npm-test@npm:0.0.16"
   dependencies:
     express: "npm:^4.19.2"
     open: "npm:^10.1.0"
   bin:
-    studio: cli.js
-  checksum: 10c0/708aa3df2b8b888426e6c3da099f924ad95e326a0ae5c56d131709e01c0c74a89085849251c6030da272997fea7c7fea01dc15028a8f45f1c710dc41ed4e2694
+    studio: src/test-studio-server/main.js
+  checksum: 10c0/0b9c4ecb82399acb446673e56dc13e907f5f006aecabf6e415b7b55e3a5a4a6a811288e34289546ea220f30ccbc9fcdd9713d8b5ee99cb76840fb213d6c1ac73
   languageName: node
   linkType: hard
 
@@ -7570,7 +7570,7 @@ __metadata:
     framer-motion: "npm:^11.0.24"
     graphql: "npm:^16.8.1"
     graphql-codegen: "npm:^0.4.0"
-    kubrick-code-npm-test: "npm:^0.0.15"
+    kubrick-code-npm-test: "npm:^0.0.16"
     next: "npm:14.1.4"
     next-auth: "npm:^4.24.7"
     react: "npm:^18"
