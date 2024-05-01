@@ -17,7 +17,7 @@
     "typescript": "^5.4.5"
   },
   "scripts": {
-    "prepack": "node build.js",
+    "prepack": "cd src && cd test-studio && yarn build && cd ../../ && node build.js",
     "clean": "rm -rf dist"
   },
   "bin": {
