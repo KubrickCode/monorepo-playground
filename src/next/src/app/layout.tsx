@@ -5,7 +5,6 @@ import { ThemeProvider } from "@core/theme";
 import { Header } from "@core/header";
 import { ApolloWrapper } from "@core/graphql";
 import { AuthContext } from "@core/auth";
-import { logString } from "kubrick-code-npm-test";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +18,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  logString("RootLayout");
   return (
     <html lang="en">
       <body className={inter.className}>
