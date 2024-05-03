@@ -23,6 +23,7 @@
     "build": "yarn build-ts && yarn prepack"
   },
   "bin": {
-    "studio": "./dist/main.js"
+    "studio": "./dist/main.js",
+    "init": "./dist/init.js"
   }
 }
