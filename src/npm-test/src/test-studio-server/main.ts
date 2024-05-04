@@ -26,10 +26,6 @@ try {
   process.exit(1);
 }
 
-app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "./index.html"));
-});
-
 app.post("/create-json", async (req: Request, res: Response) => {
   const jsonFilePath = path.resolve(
     process.cwd(),
@@ -61,6 +57,14 @@ app.post("/create-json", async (req: Request, res: Response) => {
     console.error("File writing failed:", err);
     res.status(500).send({ message: "Failed to create files" });
   }
+});
+
+app.get("/api/get-something", (req: Request, res: Response) => {
+  res.json({ message: "Here is the data you requested!" });
+});
+
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "./index.html"));
 });
 
 app.listen(port, () => {

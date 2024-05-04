@@ -18,9 +18,6 @@ catch (error) {
     console.error("Failed to read configuration file at " + configPath + ":", error);
     process.exit(1);
 }
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./index.html"));
-});
 app.post("/create-json", async (req, res) => {
     const jsonFilePath = path.resolve(process.cwd(), config.jsonFilePath || "./output.json");
     const tsFilePath = path.resolve(process.cwd(), config.jsonFilePath
@@ -45,6 +42,12 @@ app.post("/create-json", async (req, res) => {
         console.error("File writing failed:", err);
         res.status(500).send({ message: "Failed to create files" });
     }
+});
+app.get("/api/get-something", (req, res) => {
+    res.json({ message: "Here is the data you requested!" });
+});
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./index.html"));
 });
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
