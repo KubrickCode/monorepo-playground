@@ -1,3 +1,8 @@
 import { ThemeProvider } from "~/core/theme";
+import { Router } from "../router";
 
-export const App = () => <ThemeProvider>Hello, World</ThemeProvider>;
+export const App = () => (
+  <ThemeProvider>
+    <Router />
+  </ThemeProvider>
+);
