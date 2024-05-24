@@ -94,7 +94,7 @@ run svc *args:
 
     react)
       cd "{{ react_dir }}"
-      GENERATE_SOURCEMAP=false PORT=3000 yarn start
+      GENERATE_SOURCEMAP=false PORT=3000 yarn dev
       ;;
 
     fiber)
