@@ -1,1 +1,3 @@
-export const App = () => <>Hello, World</>;
+import { ThemeProvider } from "~/core/theme";
+
+export const App = () => <ThemeProvider>Hello, World</ThemeProvider>;
