@@ -1,17 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { Layout } from "~/layout";
 import { DataTableTestPage, HomePage } from "~/pages";
 
-const PATH = {
+export const ROUTER_PATH = {
   HOME: "/",
   DATA_TABLE_TEST: "/data-table-test",
 };
 
 export const Router = () => (
   <BrowserRouter>
-    <Routes>
-      <Route path={PATH.HOME} element={<HomePage />} />
-      <Route path={PATH.DATA_TABLE_TEST} element={<DataTableTestPage />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path={ROUTER_PATH.HOME} element={<HomePage />} />
+        <Route
+          path={ROUTER_PATH.DATA_TABLE_TEST}
+          element={<DataTableTestPage />}
+        />
+      </Routes>
+    </Layout>
   </BrowserRouter>
 );
