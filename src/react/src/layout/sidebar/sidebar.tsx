@@ -15,6 +15,7 @@ export const LayoutSidebar = () => {
             <LayoutNavItem to={ROUTER_PATH.DATA_TABLE_TEST}>
               Data Table Test
             </LayoutNavItem>
+            <LayoutNavItem to={ROUTER_PATH.I18N_TEST}>I18n Test</LayoutNavItem>
           </Flex>
         </NavGroup>
       </SidebarSection>
