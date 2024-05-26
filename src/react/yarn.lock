@@ -229,7 +229,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.22.15":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.22.15, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.9":
   version: 7.24.6
   resolution: "@babel/runtime@npm:7.24.6"
   dependencies:
@@ -1921,9 +1921,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kubrick/react-i18next-manager@npm:^0.5.6":
-  version: 0.5.6
-  resolution: "@kubrick/react-i18next-manager@npm:0.5.6"
+"@kubrick/react-i18next-manager@npm:^0.5.7":
+  version: 0.5.7
+  resolution: "@kubrick/react-i18next-manager@npm:0.5.7"
   dependencies:
     "@nestjs/common": "npm:^10.3.8"
     "@nestjs/core": "npm:^10.3.8"
@@ -1940,7 +1940,7 @@ __metadata:
     uuid: "npm:^9.0.1"
   bin:
     react-i18next-manager: bin/cli.js
-  checksum: 10c0/d33cc0f20d7156315e91ca998984947e381fda9a037ca5f3eb60d8c9995ad213d9bd7289f7afc91c328d463202e017b05fc07ccc45d8afa7fb75efb739cb39f6
+  checksum: 10c0/494059b9bf1b6b680b35b1b318984cd41c9d8dc0a9152aae750036134af222ab04a26e392ebb45a985e9fa973d87071a2a947964ce8496f27aa5a29ffbc0dfc5
   languageName: node
   linkType: hard
 
@@ -4280,6 +4280,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-parse-stringify@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "html-parse-stringify@npm:3.0.1"
+  dependencies:
+    void-elements: "npm:3.1.0"
+  checksum: 10c0/159292753d48b84d216d61121054ae5a33466b3db5b446e2ffc093ac077a411a99ce6cbe0d18e55b87cf25fa3c5a86c4d8b130b9719ec9b66623259000c72c15
+  languageName: node
+  linkType: hard
+
 "http-cache-semantics@npm:^4.1.1":
   version: 4.1.1
   resolution: "http-cache-semantics@npm:4.1.1"
@@ -4324,6 +4333,15 @@ __metadata:
     agent-base: "npm:^7.0.2"
     debug: "npm:4"
   checksum: 10c0/bc4f7c38da32a5fc622450b6cb49a24ff596f9bd48dcedb52d2da3fa1c1a80e100fb506bd59b326c012f21c863c69b275c23de1a01d0b84db396822fdf25e52b
+  languageName: node
+  linkType: hard
+
+"i18next@npm:^23.11.5":
+  version: 23.11.5
+  resolution: "i18next@npm:23.11.5"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10c0/b0bec64250a3e529d4c51e2fc511406a85c5dde3d005d3aabe919551ca31dfc0a8f5490bf6e44649822e895a1fa91a58092d112367669cd11b2eb89e6ba90d1a
   languageName: node
   linkType: hard
 
@@ -5417,6 +5435,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-i18next@npm:^14.1.2":
+  version: 14.1.2
+  resolution: "react-i18next@npm:14.1.2"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.9"
+    html-parse-stringify: "npm:^3.0.1"
+  peerDependencies:
+    i18next: ">= 23.2.3"
+    react: ">= 16.8.0"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 10c0/cb8a83b3696639f083dc9f770d9d9e0681c0fe56f6b5fe24cd6facce08d363c37bd3440078e9d63abacabd7037b783e6b4e4d0c935de9c8dda7820bd4ef7e329
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -5524,7 +5560,7 @@ __metadata:
     "@chakra-ui/react": "npm:^2.8.2"
     "@emotion/react": "npm:^11.11.4"
     "@emotion/styled": "npm:^11.11.5"
-    "@kubrick/react-i18next-manager": "npm:^0.5.6"
+    "@kubrick/react-i18next-manager": "npm:^0.5.7"
     "@saas-ui/react": "npm:^2.8.5"
     "@types/react": "npm:^18.2.66"
     "@types/react-dom": "npm:^18.2.22"
@@ -5535,8 +5571,10 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.6"
     framer-motion: "npm:^11.2.6"
+    i18next: "npm:^23.11.5"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-i18next: "npm:^14.1.2"
     react-router-dom: "npm:^6.23.1"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.2.0"
@@ -6365,6 +6403,13 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 10c0/664b8d68e4f5152ae16bd2041af1bbaf11c43630ac461835bc31ff7d019913b33e465386e09f66dc1037d7aeefbb06939e0173787c063319bc2bd30c3b9ad8e4
+  languageName: node
+  linkType: hard
+
+"void-elements@npm:3.1.0":
+  version: 3.1.0
+  resolution: "void-elements@npm:3.1.0"
+  checksum: 10c0/0b8686f9f9aa44012e9bd5eabf287ae0cde409b9a2854c5a2335cb83920c957668ac5876e3f0d158dd424744ac411a7270e64128556b451ed3bec875ef18534d
   languageName: node
   linkType: hard
 

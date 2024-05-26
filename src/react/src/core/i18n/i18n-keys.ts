@@ -1,0 +1,1 @@
+export const i18n = {keys: {common: {store: "common.store",product: "common.product",},error: {existsStore: "error.existsStore",},}};export default i18n;

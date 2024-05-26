@@ -1,0 +1,16 @@
+{
+  "en": {
+    "translation": {
+      "common.store": "store",
+      "common.product": "product",
+      "error.existsStore": "Already exists store."
+    }
+  },
+  "ko": {
+    "translation": {
+      "common.store": "상점",
+      "common.product": "상품",
+      "error.existsStore": "이미 존재하는 상점입니다."
+    }
+  }
+}
