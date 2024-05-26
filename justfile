@@ -101,6 +101,11 @@ run svc *args:
       cd "{{ fiber_dir }}"
         PORT=3002 air
         ;;
+
+    i18n-studio)
+      cd "{{ react_dir }}"
+        yarn i18n studio
+        ;;
       
 
   esac
