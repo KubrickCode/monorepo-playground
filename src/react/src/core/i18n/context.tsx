@@ -1,5 +1,5 @@
 import i18n from "i18next";
-import { createContext, useCallback, useContext } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 
 import translations from "./i18n.json";
@@ -30,12 +30,18 @@ const I18nContext = createContext<I18nContextType>({
 });
 
 export const I18nProvider = ({ children }: { children?: JSX.Element }) => {
-  const changeLanguage = useCallback((language: string) => {
-    localStorage.setItem(STORAGE_KEY, language);
-    i18n.changeLanguage(language);
+  const forceUpdate = useForceUpdate();
 
-    document.documentElement.setAttribute("lang", language);
-  }, []);
+  const changeLanguage = useCallback(
+    (language: string) => {
+      localStorage.setItem(STORAGE_KEY, language);
+      i18n.changeLanguage(language);
+
+      document.documentElement.setAttribute("lang", language);
+      forceUpdate();
+    },
+    [forceUpdate]
+  );
 
   const context = {
     changeLanguage,
@@ -50,3 +56,11 @@ export const I18nProvider = ({ children }: { children?: JSX.Element }) => {
 };
 
 export const useI18n = () => useContext(I18nContext);
+
+const useForceUpdate = () => {
+  const [, setTick] = useState(0);
+
+  return useCallback(() => {
+    setTick((tick) => tick + 1);
+  }, []);
+};
