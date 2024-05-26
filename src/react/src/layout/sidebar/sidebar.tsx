@@ -32,6 +32,7 @@ const LayoutNavItem = ({
   return (
     <Link to={to}>
       <NavItem
+        as="div"
         bgColor={pathname === to ? "gray.100" : "transparent"}
         borderRadius={5}
         display="inline-flex"
