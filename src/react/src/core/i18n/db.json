@@ -1,5 +1,75 @@
 {
-  "locales": [],
-  "groups": [],
-  "translations": []
+  "locales": [
+    {
+      "id": "d93ad053-d36c-46c9-93fc-8e194c3418f3",
+      "label": "en",
+      "position": 0
+    },
+    {
+      "id": "84456a9c-8218-4242-b156-0d2b9cb68bc1",
+      "label": "ko",
+      "position": 1
+    }
+  ],
+  "groups": [
+    {
+      "id": "33fba99f-0569-4ecc-909d-f44a70d3e760",
+      "label": "common",
+      "position": 0,
+      "children": []
+    },
+    {
+      "id": "a036f8a0-75c5-4648-ab7b-d55c99bd9ab6",
+      "label": "error",
+      "position": 1,
+      "children": []
+    }
+  ],
+  "translations": [
+    {
+      "id": "7a72a0de-2757-46f2-85c2-48bf6f90fff7",
+      "groupId": "33fba99f-0569-4ecc-909d-f44a70d3e760",
+      "key": "store",
+      "values": [
+        {
+          "localeId": "d93ad053-d36c-46c9-93fc-8e194c3418f3",
+          "value": "store"
+        },
+        {
+          "localeId": "84456a9c-8218-4242-b156-0d2b9cb68bc1",
+          "value": "상점"
+        }
+      ]
+    },
+    {
+      "id": "562d229b-7f6a-4200-bd26-0dc24ae1073c",
+      "groupId": "33fba99f-0569-4ecc-909d-f44a70d3e760",
+      "key": "product",
+      "values": [
+        {
+          "localeId": "d93ad053-d36c-46c9-93fc-8e194c3418f3",
+          "value": "product"
+        },
+        {
+          "localeId": "84456a9c-8218-4242-b156-0d2b9cb68bc1",
+          "value": "상품"
+        }
+      ]
+    },
+    {
+      "id": "28fa3b49-7d1f-4895-bf20-e3097734ebd2",
+      "groupId": "a036f8a0-75c5-4648-ab7b-d55c99bd9ab6",
+      "key": "existsStore",
+      "values": [
+        {
+          "localeId": "d93ad053-d36c-46c9-93fc-8e194c3418f3",
+          "value": "Already exists store."
+        },
+        {
+          "localeId": "84456a9c-8218-4242-b156-0d2b9cb68bc1",
+          "value": "이미 존재하는 상점입니다."
+        }
+      ]
+    }
+  ]
 }
